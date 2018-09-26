@@ -1,0 +1,25 @@
+<div #rowWrapper class="ngx-datagrid-cell-container">
+  <div *ngIf="hasOrigin" class="ngx-datagrid-origin-container" [style.height.px]="pinnedRowHeight" [style.width.px]="pinnedColumnWidth">
+    <ng-container #pinnedOrigin></ng-container>
+  </div>
+  <div *ngIf="pinFirstRow" class="ngx-datagrid-row-header-container" [style.height.px]="pinnedRowHeight" [style.width]="getBodyWidth()">
+    <div
+      class="ngx-datagrid-row-header-scroller"
+      [style.height.px]="pinnedRowHeight"
+      [style.width.px]="config.totalGridWidth - pinnedColumnWidth"
+      [style.marginLeft.px]="pinnedRowScrollLeft"
+    >
+      <ng-container #pinnedHeader></ng-container>
+    </div>
+  </div>
+  <div *ngIf="pinFirstColumn" class="ngx-datagrid-column-header-container" [style.width.px]="pinnedColumnWidth" [style.height]="getBodyHeight()">
+    <div class="ngx-datagrid-column-header-scroller" [style.top.px]="pinnedColumnScrollTop">
+      <ng-container #pinnedColumn></ng-container>
+    </div>
+  </div>
+  <div #bodyWrapper class="ngx-datagrid-body-container" [style.width]="getBodyWidth()" [style.height]="getBodyHeight()" (scroll)="bodyScrollHandler($event)">
+    <div class="ngx-datagrid-body-scroller" [style.width.px]="config.totalGridWidth - pinnedColumnWidth" [style.height.px]="config.totalGridHeight - pinnedRowHeight">
+      <ng-container #rowContainer></ng-container>
+    </div>
+  </div>
+</div>

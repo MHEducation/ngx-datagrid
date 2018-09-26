@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  overflow: hidden;
+
+  .ngx-datagrid-cell-container {
+    display: block;
+    float: left;
+    width: 100%;
+
+    .ngx-datagrid-origin-container {
+      float: left;
+    }
+
+    .ngx-datagrid-row-header-container {
+      position: relative;
+      float: left;
+
+      .ngx-datagrid-row-header-scroller {
+        float: left;
+        position: relative;
+      }
+    }
+
+    .ngx-datagrid-column-header-container {
+      float: left;
+      clear: both;
+      position: relative;
+
+      .ngx-datagrid-column-header-scroller {
+        top: 0;
+        position: absolute;
+      }
+    }
+
+    .ngx-datagrid-body-container {
+      overflow: auto;
+    }
+  }
+}

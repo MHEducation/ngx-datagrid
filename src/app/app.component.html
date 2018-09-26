@@ -1,0 +1,43 @@
+<h1>{{title}}</h1>
+<div class="wrapper">
+  <ngx-datagrid
+    #ngxDataGrid
+    [columnPage]="columnPage"
+    [config]="config"
+    [dataSource]="data"
+    [pinFirstRow]="true"
+    [pinFirstColumn]="true"
+    [pinnedRowHeight]="40"
+    [pinnedColumnWidth]="200"
+    [rowPage]="rowPage"
+    [gridSize]="gridSize">
+    <ng-template #columnHeader let-data$="data$" let-x="x" let-y="y">
+      <span class="header">
+        header<br>{{data$ | async}} ({{x}},{{y}})
+      </span>
+    </ng-template>
+
+    <ng-template #tableCell let-data$="data$" let-x="x" let-y="y">
+      <span class="body-cell">
+        {{data$ | async}} ({{x}},{{y}})
+      </span>
+    </ng-template>
+  </ngx-datagrid>
+  <div class="vertical-pagination">
+    <div style="float:left">
+      vertical<br>pagination<br>page {{this.rowPage}} / 5
+    </div>
+    <div style="float:left;margin-left:15px">
+      <button class="arrow-up" [disabled]="rowPage > 4" (click)="updateRowPagination(1)"></button>
+      <br>
+      <button class="arrow-down" [disabled]="rowPage < 2" (click)="updateRowPagination(-1)"></button>
+    </div>
+  </div>
+</div>
+<div class="horizontal-pagination">
+  <p>
+    horizontal<br>pagination<br>page {{this.columnPage}} / 5
+  </p>
+  <button class="arrow-left" [disabled]="columnPage < 2" (click)="updateColumnPagination(-1)"></button>
+  <button class="arrow-right" [disabled]="columnPage > 4" (click)="updateColumnPagination(1)"></button>
+</div>

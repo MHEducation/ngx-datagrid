@@ -1,0 +1,72 @@
+ngx-datagrid {
+  width: 750px;
+  background-color: lightblue;
+  height: 500px;
+}
+
+.wrapper {
+  width: 750px;
+  float: left;
+}
+
+.body-cell {
+  color: black;
+}
+
+.header {
+  color: red;
+}
+
+.vertical-pagination {
+  float: right;
+}
+
+.horizontal-pagination {
+  float: left;
+}
+
+.arrow-left,
+.arrow-right,
+.arrow-up,
+.arrow-down {
+  width: 0;
+  height: 0;
+  display: block;
+  padding: 0;
+  background-color: transparent;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.arrow-up {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: none;
+  border-bottom: 15px solid green;
+}
+
+.arrow-down {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid green;
+  border-bottom: none;
+}
+
+.arrow-left {
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid green;
+  border-left: none;
+  float: left;
+  margin-right: 15px;
+}
+
+.arrow-right {
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: none;
+  border-left: 15px solid green;
+  float: left;
+}
