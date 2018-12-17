@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { DatagridComponent } from './datagrid.component';
-import { CellComponent } from '../cell/cell.component';
+import { DatagridComponent } from './datagrid/datagrid.component';
+import { CellComponent } from './cell/cell.component';
 
 @NgModule({
   declarations: [DatagridComponent, CellComponent],
@@ -11,5 +11,3 @@ import { CellComponent } from '../cell/cell.component';
   exports: [DatagridComponent]
 })
 export class DatagridModule {}
-
-export * from './datagrid.component';
