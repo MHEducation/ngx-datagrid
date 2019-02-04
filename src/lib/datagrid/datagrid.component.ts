@@ -67,7 +67,7 @@ export class DatagridComponent
   private cellFactory: ComponentFactory<
     CellComponent
   > = this.componentFactoryResolver.resolveComponentFactory(CellComponent);
-  cellMatrix: [[ComponentRef<CellComponent>]] = [] as [[ComponentRef<CellComponent>]];
+  cellMatrix: ComponentRef<CellComponent>[][] = [];
   hasOrigin = false;
   pinnedRowScrollLeft = 0;
   pinnedColumnScrollTop = 0;
@@ -207,7 +207,7 @@ export class DatagridComponent
       rowIndex < this.rows.length && rowIndex <= this.config.visibleRows;
       rowIndex++
     ) {
-      const cellRow: [ComponentRef<CellComponent>] = [] as [ComponentRef<CellComponent>];
+      const cellRow: ComponentRef<CellComponent>[] = [];
       this.rows[rowIndex].forEach((cell: any, columnIndex: number) => {
         if (columnIndex <= this.config.visibleColumns) {
           // probably want at least 3
@@ -223,7 +223,7 @@ export class DatagridComponent
     }
   }
 
-  destroyOldMatrix(matrix: [[ComponentRef<CellComponent>]]) {
+  destroyOldMatrix(matrix: ComponentRef<CellComponent>[][]) {
     for (let i = 0; i < matrix.length; i++) {
       for (let j = 0; j < (matrix[i] ? matrix[i].length : 0); j++) {
         const cell = matrix[i][j];
@@ -232,7 +232,7 @@ export class DatagridComponent
       }
     }
 
-    this.cellMatrix = [] as [[ComponentRef<CellComponent>]];
+    this.cellMatrix = [];
   }
 
   updateConfigWithCellData() {
@@ -523,8 +523,11 @@ export class DatagridComponent
   }
 
   removeTouchHandlers() {
-    this.tableHeaderContentBar.removeEventListener('touchstart', this.touchStartHandler);
-    this.tableHeaderContentBar.removeEventListener('touchmove', this.touchStartCallbackRef);
+    if (this.tableHeaderContentBar) {
+      this.tableHeaderContentBar.removeEventListener('touchstart', this.touchStartHandler);
+      this.tableHeaderContentBar.removeEventListener('touchmove', this.touchStartCallbackRef);
+    }
+
     this.touchStartCallbackRef = undefined;
   }
 }
