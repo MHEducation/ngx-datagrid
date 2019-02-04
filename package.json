@@ -9,10 +9,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng-packagr -p package.json",
+    "build": "ng-packagr -p package.json  && cp package.json dist/package.json",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "release": "npm run build && npm release"
   },
   "peerDependencies": {
     "@angular/common": "^7.0.0",
