@@ -384,7 +384,7 @@ describe('DatagridComponent', () => {
     it('should not init cells when row data size is unchanged', () => {
       spyOn(component, 'initCells');
       spyOn(component, 'update');
-      const cellRow: [ComponentRef<CellComponent>] = [] as [ComponentRef<CellComponent>];
+      const cellRow: ComponentRef<CellComponent>[] = [];
       component.cellMatrix.push(cellRow);
       const newRows = new Array(10);
       newRows[0] = new Array(10);
@@ -414,7 +414,7 @@ describe('DatagridComponent', () => {
 
   describe('shouldRebuildCellMatrix', () => {
     beforeEach(() => {
-      const cellRow: [ComponentRef<CellComponent>] = [] as [ComponentRef<CellComponent>];
+      const cellRow: ComponentRef<CellComponent>[] = [];
       component.cellMatrix.push(cellRow);
       component.forceUpdate = false;
       component.rows = new Array(10);
@@ -455,7 +455,7 @@ describe('DatagridComponent', () => {
     });
 
     it('should return true if cell matrix should be rebuilt if cellMatrix object is empty.', () => {
-      component.cellMatrix = [] as [[ComponentRef<CellComponent>]];
+      component.cellMatrix = [] as ComponentRef<CellComponent>[][];
       expect(component.shouldRebuildCellMatrix()).toBe(true);
     });
   });
