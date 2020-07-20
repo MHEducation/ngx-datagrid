@@ -17,11 +17,9 @@ import {
   ViewContainerRef
 } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/observable/zip';
-import 'rxjs/add/observable/of';
+import { BehaviorSubject ,  Observable ,  Subject } from 'rxjs';
+
+
 
 import { CellComponent } from '../cell/cell.component';
 
@@ -51,17 +49,17 @@ export class DatagridComponent
   @Input()
   pinnedColumnWidth = 0;
 
-  @ViewChild('rowContainer', { read: ViewContainerRef })
+  @ViewChild('rowContainer', { read: ViewContainerRef, static: false  })
   private viewContainer: ViewContainerRef;
-  @ViewChild('pinnedOrigin', { read: ViewContainerRef })
+  @ViewChild('pinnedOrigin', { read: ViewContainerRef, static: false  })
   private pinnedOrigin: ViewContainerRef;
-  @ViewChild('pinnedHeader', { read: ViewContainerRef })
+  @ViewChild('pinnedHeader', { read: ViewContainerRef, static: false  })
   private pinnedHeader: ViewContainerRef;
-  @ViewChild('pinnedColumn', { read: ViewContainerRef })
+  @ViewChild('pinnedColumn', { read: ViewContainerRef, static: false  })
   private pinnedColumn: ViewContainerRef;
-  @ViewChild('rowWrapper', { read: ElementRef })
+  @ViewChild('rowWrapper', { read: ElementRef, static: false  })
   private rowWrapper: ElementRef;
-  @ViewChild('bodyWrapper', { read: ElementRef })
+  @ViewChild('bodyWrapper', { read: ElementRef, static: false  })
   private bodyWrapper: ElementRef;
 
   private cellFactory: ComponentFactory<
