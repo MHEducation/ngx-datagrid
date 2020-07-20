@@ -15,10 +15,8 @@ import { async, ComponentFixture, fakeAsync, inject, TestBed, tick } from '@angu
 import { DatagridComponent } from './datagrid.component';
 import { CellComponent } from '../cell/cell.component';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/mapTo';
+import { BehaviorSubject ,  Observable ,  Subject } from 'rxjs';
+
 
 export class DataSource {
   subject$ = new BehaviorSubject([[]]);
@@ -77,14 +75,14 @@ export class DataSource {
     `
 })
 export class TestingComponent implements OnInit {
-  @ViewChild('tableCell', { read: TemplateRef })
+  @ViewChild('tableCell', { read: TemplateRef, static: false  })
   tableCellTemplate: TemplateRef<any>;
 
-  @ViewChild('columnHeader', { read: TemplateRef })
+  @ViewChild('columnHeader', { read: TemplateRef, static: false  })
   columnHeaderTemplate: TemplateRef<any>;
 
   @ViewChild(
-    DatagridComponent
+    DatagridComponent, { static: false }
   ) /* using viewChild we get access to the TestComponent which is a child of TestHostComponent */
   datagridComponent: any;
 

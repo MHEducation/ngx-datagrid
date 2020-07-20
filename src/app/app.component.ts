@@ -1,6 +1,5 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject ,  BehaviorSubject } from 'rxjs';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 export class DataSource {
   subject$ = new BehaviorSubject([[]]);
@@ -10,6 +9,7 @@ export class DataSource {
   }
 
   update(newThing: any) {
+    console.log('called update');
     this.subject$.next(newThing);
   }
 }
@@ -20,11 +20,11 @@ export class DataSource {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('tableCell', { read: TemplateRef })
+  @ViewChild('tableCell', { read: TemplateRef, static: true })
   tableCellTemplate: TemplateRef<any>;
-  @ViewChild('columnHeader', { read: TemplateRef })
+  @ViewChild('columnHeader', { read: TemplateRef, static: true  })
   columnHeaderTemplate: TemplateRef<any>;
-  @ViewChild('ngxDataGrid')
+  @ViewChild('ngxDataGrid', {static: true })
   ngxDataGrid;
 
   title = 'ngx-datagrid works!';
@@ -48,10 +48,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     let counter = 0;
-
+    console.log('on init');
     for (let i = 0; i < 500; i++) {
       const row = [];
-
+      console.log('add row');
       for (let j = 0; j < 500; j++) {
         counter++;
 
@@ -70,28 +70,30 @@ export class AppComponent implements OnInit {
     }
 
     this.data.update(this.bigDataSource);
+    console.log(this.data.getRows().subscribe((current)=>{
+      console.log('the current datasource is', current);
+    }));
+    // counter = 0;
 
-    counter = 0;
+    // for (let i = 0; i < 20; i++) {
+    //   const row = [];
 
-    for (let i = 0; i < 20; i++) {
-      const row = [];
+    //   for (let j = 0; j < 20; j++) {
+    //     counter++;
 
-      for (let j = 0; j < 20; j++) {
-        counter++;
+    //     let cellDescriptor;
 
-        let cellDescriptor;
+    //     if (i === 0) {
+    //       cellDescriptor = this.getCellDescriptor(counter, this.columnHeaderTemplate);
+    //     } else {
+    //       cellDescriptor = this.getCellDescriptor(counter, this.tableCellTemplate);
+    //     }
 
-        if (i === 0) {
-          cellDescriptor = this.getCellDescriptor(counter, this.columnHeaderTemplate);
-        } else {
-          cellDescriptor = this.getCellDescriptor(counter, this.tableCellTemplate);
-        }
+    //     row.push(cellDescriptor);
+    //   }
 
-        row.push(cellDescriptor);
-      }
-
-      this.smallDataSource.push(row);
-    }
+    //   this.smallDataSource.push(row);
+    // }
   }
 
   getCellDescriptor(data: any, template: any) {

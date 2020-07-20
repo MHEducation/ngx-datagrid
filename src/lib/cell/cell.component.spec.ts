@@ -1,9 +1,8 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/observable/of';
+import { Observable ,  BehaviorSubject } from 'rxjs';
+
 
 import { CellComponent } from './cell.component';
 

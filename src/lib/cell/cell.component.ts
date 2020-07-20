@@ -10,8 +10,7 @@ import {
   TemplateRef
 } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject ,  Subject } from 'rxjs';
 
 @Component({
   selector: 'ngx-datagrid-cell',
