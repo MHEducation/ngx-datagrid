@@ -1,5 +1,14 @@
 # NgxDatagrid
 
+<p align="center">:warning::warning::warning:</p>
+
+This library has been archived, please use with caution.
+
+* Active support has been **discontinued**.
+* Security support has been **discontinued**.
+
+<p align="center">:warning::warning::warning:</p>
+
 ngx-datagrid is table component that offers features not available in other Angular tables. There has only been one real viable option if you needed a performant table component in your Angular app and that has been ngx-datatable by swinlane. Angular Material has since released a datatable but is missing virtualization.
 
 ## ngx-datagrid implements features for rows & columns
